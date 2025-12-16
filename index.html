@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCE EVENTS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">PCE EVENTS</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#register">Register</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1 class="HEADING">PCE EVENTS</h1>
+        <h3 class="tagline">ALL INTERESTED PARTICIPANTS ARE WELCOME TO JOIN THE EVENTS ORGANIZED BY PCE.</h3>
+        <button id="openModalBtn" class="btn-hero">Register Now</button>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2 class="section-title">About Us</h2>
+        <p class="DESCRIPT">PCE ORGANIZES VARIOUS EVENTS THROUGHOUT THE YEAR INCLUDING WORKSHOPS, SEMINARS, AND CULTURAL FESTIVALS. THESE EVENTS AIM TO ENHANCE STUDENT ENGAGEMENT AND PROVIDE OPPORTUNITIES FOR LEARNING AND NETWORKING.</p>
+        
+        <div class="gallery">
+            <div class="card">
+                <img src="./campus scene.jpeg" class="campus" alt="Campus View">
+                <p>Our Vibrant Campus</p>
+            </div>
+            <div class="card">
+                <img src="saurabh.jpeg" class="saurabh" alt="Coordinator">
+                <p>Student Coordinator</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Modal (Popup) -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="section-title" style="font-size: 24px;">Event Registration</h2>
+            <p class="DESCRIPT" style="font-size: 16px; margin-bottom: 20px;">Fill out the form below to participate.</p>
+            
+            <form class="registration-form" id="regForm">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="rollno">Roll Number:</label>
+                    <input type="text" id="rollno" name="rollno" placeholder="Enter your roll number" required>
+                </div>
+                <div class="form-group">
+                    <label for="activity">Select Activity:</label>
+                    <select id="activity" name="activity">
+                        <option value="speech">Speech</option>
+                        <option value="dance">Dance</option>
+                        <option value="singing">Singing</option>
+                        <option value="drama">Drama</option>
+                        <option value="volunteer">Volunteering</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Submit Registration</button>
+            </form>
+            <div id="successMessage" class="success-message" style="display: none;">
+                <h3>🎉 Registration Successful!</h3>
+                <p>Thank you for registering. We will contact you soon.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section Placeholder (linked in nav) -->
+    <section id="contact"></section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 PCE Events. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Modal Logic
+        const modal = document.getElementById("registerModal");
+        const btn = document.getElementById("openModalBtn");
+        const span = document.getElementsByClassName("close-btn")[0];
+
+        // Button click par modal open karein
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Close button (x) click par modal band karein
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Modal ke bahar click karne par bhi band karein
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Form Submission Logic
+        document.getElementById('regForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Page reload rokein
+            
+            // Form chupayein
+            this.style.display = 'none';
+            
+            // Success message dikhayein
+            document.getElementById('successMessage').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
